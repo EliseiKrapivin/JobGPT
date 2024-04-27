@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Чат с ГПТ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chat-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #chat-output {
+            margin-bottom: 20px;
+            padding: 10px;
+            overflow-y: scroll;
+            max-height: 300px;
+        }
+
+        .user-message {
+            max-width: 70%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #e6f2ff;
+            float: right;
+            clear: both;
+        }
+
+        .gpt-message {
+            max-width: 70%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            float: left;
+            clear: both;
+        }
+
+        #user-input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        #user-input {
+            flex: 1;
+            margin-right: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        #send-button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #send-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div id="chat-output"></div>
+        <div id="user-input-container">
+            <input type="text" id="user-input" placeholder="Введите сообщение...">
+            <button id="send-button">Отправить</button>
+        </div>
+    </div>
+    <script>
+        const chatOutput = document.getElementById('chat-output');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const gptResponses = [
+            'Привет! Как я могу помочь вам сегодня?',
+            'Что-то еще интересует?',
+            'Давайте обсудим ваш вопрос.',
+            'Я готов помочь вам!',
+            'Задавайте свой вопрос, и я постараюсь на него ответить.'
+        ];
+        let currentResponseIndex = 0;
+
+        // Функция для добавления сообщения пользователя в чат
+        function addUserMessage(message) {
+            const userMessage = document.createElement('div');
+            userMessage.className = 'user-message';
+            userMessage.textContent = message;
+            chatOutput.appendChild(userMessage);
+            chatOutput.scrollTop = chatOutput.scrollHeight;
+        }
+
+        // Функция для добавления ответа ГПТ в чат
+        function addGPTResponse(response) {
+            const gptResponse = document.createElement('div');
+            gptResponse.className = 'gpt-message';
+            gptResponse.textContent = response;
+            chatOutput.appendChild(gptResponse);
+            chatOutput.scrollTop = chatOutput.scrollHeight;
+        }
+
+        // Функция для обработки отправки сообщения
+        function sendMessage() {
+            const userMessage = userInput.value.trim();
+            if (userMessage !== '') {
+                addUserMessage(userMessage);
+                generateGPTResponse(userMessage);
+                userInput.value = '';
+            }
+        }
+
+        // Обработчик события клика по кнопке отправки
+        sendButton.addEventListener('click', sendMessage);
+
+        // Обработчик события нажатия Enter в поле ввода
+        userInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Функция для генерации ответа от ГПТ
+        function generateGPTResponse(userMessage) {
+            if (currentResponseIndex < gptResponses.length) {
+                addGPTResponse(gptResponses[currentResponseIndex]);
+                currentResponseIndex++;
+            } else {
+                addGPTResponse('Извините, у меня закончились идеи.');
+            }
+        }
+    </script>
+</body>
+</html>

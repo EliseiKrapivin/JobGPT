@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <h1>Поиск вакансий</h1>
+    <h1>Поиск волонтерства</h1>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -60,6 +60,18 @@
             </ul>
         </nav>
     </header>
+    <header>
+        <nav>
+            <a href="index.html"><img src="image/_f1042728-ac40-476f-9d5d-b365f910b3ca.jpg" alt="ChatGPT Logo" class="logo" > </a>
+            <ul>
+                <li><a href="search.html">Поиск Работы</a></li>
+                <li><a href="resume.html">Резюме</a></li>
+                <li><a href="volunteering.html">Волонтерство</a></li>
+                <li><a href="recommendation.html">Recommendation</a></li>
+                <li><a href="#login" class="signup-button">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
         <div class="search-container">
             <input type="text" class="search-input" placeholder="Введите ключевые слова для поиска вакансий">
@@ -75,22 +87,22 @@
             const vacancyList = document.getElementById('vacancy-list');
             vacancyList.innerHTML = '';
 
-            const vacancies = [
-                { title: 'Разработчик веб-приложений', company: 'WebTech Inc.', location: 'Город X' },
-                { title: 'Дизайнер интерфейсов', company: 'DesignWorks', location: 'Город Y' },
-                { title: 'Менеджер по продажам', company: 'SalesForce', location: 'Город Z' },
-                { title: 'Аналитик данных', company: 'DataAnalytics Co.', location: 'Город W' },
-                { title: 'Frontend разработчик', company: 'TechFront Ltd.', location: 'Город V' }
+            const volunteerVacancies = [
+                { title: 'Волонтер в приюте для животных', organization: 'AnimalCare', location: 'Город A' },
+                { title: 'Помощник волонтера в больнице', organization: 'HealthAid', location: 'Город B' },
+                { title: 'Волонтер на благотворительном мероприятии', organization: 'CharityWorks', location: 'Город C' },
+                { title: 'Волонтер по охране окружающей среды', organization: 'EcoGuardians', location: 'Город D' },
+                { title: 'Помощник волонтера по образованию', organization: 'EduHelp', location: 'Город E' }
             ];
 
-            vacancies.forEach(vacancy => {
+            volunteerVacancies.forEach(vacancy => {
                 const card = document.createElement('div');
                 card.classList.add('vacancy-card');
                 card.innerHTML = `
                     <h3>${vacancy.title}</h3>
-                    <p><strong>Компания:</strong> ${vacancy.company}</p>
+                    <p><strong>Организация:</strong> ${vacancy.organization}</p>
                     <p><strong>Местоположение:</strong> ${vacancy.location}</p>
-                    <button class="apply-button">Отправить резюме</button>
+                    <button class="register-button">Зарегистрироваться</button>
                 `;
                 vacancyList.appendChild(card);
             });
