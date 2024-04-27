@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Чат с ГПТ</title>
+    <link rel="stylesheet" href="styles.css">
+    <h1>Чат с ГПТ</h1>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,6 +56,7 @@
             border: 1px solid #ccc;
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            
         }
 
         #user-input {
@@ -81,6 +83,18 @@
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="index.html"><img src="image/_f1042728-ac40-476f-9d5d-b365f910b3ca.jpg" alt="ChatGPT Logo" class="logo" > </a>
+            <ul>
+                <li><a href="search.html">Поиск Работы</a></li>
+                <li><a href="resume.html">Резюме</a></li>
+                <li><a href="volunteering.html">Волонтерство</a></li>
+                <li><a href="recommendation.html">Recommendation</a></li>
+                <li><a href="#login" class="signup-button">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="chat-container">
         <div id="chat-output"></div>
         <div id="user-input-container">
